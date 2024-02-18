@@ -1,42 +1,45 @@
 import java.io.*;
 import java.util.*;
-class RockPaperScissiors{
-    public static void main(String args[]){
-        String playerchoice,computerchoice,winner;
-        Random random=new Random();
-        int computernumber=random.nextInt(3);
-        if(computernumber==0){
-            computerchoice="rock";
+
+class RockPaperScissors {
+    public static void main(String[] args) {
+        String playerChoice, computerChoice, winner;
+        Random random = new Random();
+        int computerNumber = random.nextInt(3);
+
+        switch (computerNumber) {
+            case 0:
+                computerChoice = "rock";
+                break;
+            case 1:
+                computerChoice = "paper";
+                break;
+            case 2:
+                computerChoice = "scissors";
+                break;
+            default:
+                computerChoice = "invalid choice";
+                break;
         }
-        else if(computernumber==1){
-            computerchoice="paper";
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your choice (scissors, rock, paper):");
+        playerChoice = sc.next().toLowerCase(); // Read only one word, convert to lowercase
+
+        if (playerChoice.equals(computerChoice)) {
+            winner = "Tie";
+        } else if (playerChoice.equals("rock") && (computerChoice.equals("scissors"))) {
+            winner = "player";
+        } else if (playerChoice.equals("scissors") && (computerChoice.equals("paper"))) {
+            winner = "player";
+        } else if (playerChoice.equals("paper") && (computerChoice.equals("rock"))) {
+            winner = "player";
+        } else {
+            winner = "computer";
         }
-        else if(computernumber==2){
-            computerchoice="scissors";
-        }
-        else{
-            computerchoice="invalid choice";
-        }
-        Scanner sc=new Scanner(System.in);
-        System.out.println("Enter ur choice{scissors,rock,paper}:");
-        playerchoice=sc.nextLine();
-        if(playerchoice.equals(computerchoice)){
-            winner="Tie";
-        }
-        else if(playerchoice.equals("rock")&&computerchoice.equals("scissors")){
-            winner="player";
-        }
-        else if(playerchoice.equals("scissors")&&computerchoice.equals("paper")){
-            winner="player";
-        }
-        else if(playerchoice.equals("paper")&&computerchoice.equals("rock")){
-            winner="player";
-        }
-        else{
-            winner="computer";
-        }
-        System.out.println("The player chose:"+playerchoice);
-        System.out.println("The computer chose:"+computerchoice);
-        System.out.println("The winner is:"+winner);
+
+        System.out.println("The player chose: " + playerChoice);
+        System.out.println("The computer chose: " + computerChoice);
+        System.out.println("The winner is: " + winner);
     }
 }
